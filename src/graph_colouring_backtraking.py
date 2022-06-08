@@ -29,18 +29,45 @@ class Graph():
  
         # Print the solution
         print ("Solution exist and Following are the assigned colours:")
-        for c in colour: print (c,end=' ')
+        for index,c in enumerate(colour): print(f"Vertex {index} ---> Color {c - 1}")
         return True
  
 # Driver Code
-g = Graph(5)
-g.graph = [ [0, 1, 1, 0, 0],
-            [1, 0, 1, 1, 0], 
-            [1, 1, 0, 1, 0], 
-            [0, 1, 1, 0, 1],
-            [0, 0, 0, 1, 0],]
+g = Graph(10)
+# g.graph = [ [0, 1, 1, 0, 0],
+#             [1, 0, 1, 1, 0], 
+#             [1, 1, 0, 1, 0], 
+#             [0, 1, 1, 0, 1],
+#             [0, 0, 0, 1, 0]]
+
+g.graph = [ [0,1,0,0,0,0,0,0,0,0],
+            [1,0,1,0,1,0,0,0,0,0],
+            [0,1,0,1,0,0,0,0,0,0],
+            [0,0,1,0,1,0,1,0,0,0],
+            [0,1,0,1,0,1,0,0,0,0],
+            [0,0,0,0,1,0,1,1,0,1],
+            [0,0,0,1,0,1,0,1,0,0],
+            [0,0,0,0,0,1,1,0,1,0],
+            [0,0,0,0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,0,0,1,0]]
 
 m = len(g.graph)
 g.graph_colouring(m)
  
 # This code is contributed by Divyanshu Mehta
+
+# Approach: The idea is to assign colors one by one to different vertices, starting from the vertex 0. Before 
+# assigning a color, check for safety by considering already assigned colors to the adjacent vertices i.e check 
+# if the adjacent vertices have the same color or not. If there is any color assignment that does not violate 
+# the conditions, mark the color assignment as part of the solution. If no assignment of color is possible 
+# then backtrack and return false.
+
+# Algorithm: 
+
+# 1) Create a recursive function that takes the graph, current index, number of vertices, and output color array.
+# 2) If the current index is equal to the number of vertices. Print the color configuration in output array.
+# 3) Assign a color to a vertex (1 to m).
+# 4) For every assigned color, check if the configuration is safe, (i.e. check if the adjacent vertices do not have 
+#     the same color) recursively call the function with next index and number of vertices
+# 5) If any recursive function returns true break the loop and return true.
+# 6) If no recursive function returns true then return false.

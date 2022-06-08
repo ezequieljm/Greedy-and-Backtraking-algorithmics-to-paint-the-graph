@@ -9,7 +9,7 @@ def add_edge(adjacents, vertex1, vertex2):
  
 # Assigns colors (starting from 0) to all
 # vertices and prints the assignment of colors
-def greedyColoring(adjacents, number_of_vertices):
+def greedy_coloring(adjacents, number_of_vertices):
     result = [-1] * number_of_vertices
  
     # Assign the first color to first vertex
@@ -44,30 +44,29 @@ def greedyColoring(adjacents, number_of_vertices):
             if (result[adjacent] != -1): available[result[adjacent]] = False
  
     # Print the result
-    for new_adjacent in range(number_of_vertices): print("Vertex", new_adjacent, " --->  Color", result[new_adjacent])
+    for vertex in range(number_of_vertices): print("Vertex", vertex, " --->  Color", result[vertex])
 
 
 def main():
-    g1 = [[] for i in range(5)]
-    g1 = add_edge(g1, 0, 1)
-    g1 = add_edge(g1, 0, 2)
-    g1 = add_edge(g1, 1, 2)
-    g1 = add_edge(g1, 1, 3)
-    g1 = add_edge(g1, 2, 3)
-    g1 = add_edge(g1, 3, 4)
-    print("Coloring of graph 1 ")
-    greedyColoring(g1, 5)
- 
-    g2 = [[] for i in range(5)]
-    g2 = add_edge(g2, 0, 1)
-    g2 = add_edge(g2, 0, 2)
-    g2 = add_edge(g2, 1, 2)
-    g2 = add_edge(g2, 1, 4)
-    g2 = add_edge(g2, 2, 4)
-    g2 = add_edge(g2, 4, 3)
-    print("\nColoring of graph 2")
-    greedyColoring(g2, 5)
+    graph1 = [  [0,1,0,0,0,0,0,0,0,0],
+                [1,0,1,0,1,0,0,0,0,0],
+                [0,1,0,1,0,0,0,0,0,0],
+                [0,0,1,0,1,0,1,0,0,0],
+                [0,1,0,1,0,1,0,0,0,0],
+                [0,0,0,0,1,0,1,1,0,1],
+                [0,0,0,1,0,1,0,1,0,0],
+                [0,0,0,0,0,1,1,0,1,0],
+                [0,0,0,0,0,0,0,0,1,1],
+                [0,0,0,0,0,1,0,0,1,0]]
 
+    g1 = [[] for i in range(10)]
+    for row in range(10):
+        for colum in range(10):
+            if graph1[row][colum] == 1 and colum > row: add_edge(g1, row, colum)
+
+    greedy_coloring(g1, 10)
+
+ 
  
 # Driver Code
 if __name__ == '__main__': main()
