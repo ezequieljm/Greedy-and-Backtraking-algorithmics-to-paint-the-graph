@@ -17,8 +17,8 @@ def greedy_coloring(adjacents, number_of_vertices):
  
  
     # A temporary array to store the available colors.
-    # True value of available[cr] would mean that the
-    # color cr is assigned to one of its adjacent vertices
+    # True value of available[color] would mean that the
+    # color color is assigned to one of its adjacent vertices
     available = [False] * number_of_vertices
  
     # Assign colors to remaining V-1 vertices
@@ -69,11 +69,10 @@ def main():
  
  
 # Driver Code
-if __name__ == '__main__': main()
+if __name__ == '__main__':
+    main()
      
  
-# This code is contributed by mohit kumar 29
-
 # 1. Color first vertex with first color. 
 # 2. Do following for remaining V-1 vertices. 
 # ….. a) Consider the currently picked vertex and color it with the 
