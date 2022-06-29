@@ -42,7 +42,6 @@ class BacktrakingGraph():
                 colors[vertex] = 0
  
     def graphColouring(self):
-        # colour = [0] * self.numberOfVertices
         if self.paintTheGraph(self.numberOfVertices, self.colour, 0) == None: return False
  
     def printPaintedGraph(self):

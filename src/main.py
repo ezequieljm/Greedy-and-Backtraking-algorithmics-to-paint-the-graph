@@ -14,19 +14,38 @@ def main():
                 [0,0,0,0,1,0,1,1,0,1],
                 [0,0,0,1,0,1,0,1,0,0],
                 [0,0,0,0,0,1,1,0,1,0],
-                [0,0,0,0,0,0,0,0,1,1],
+                [0,0,0,0,0,0,0,1,0,1],
                 [0,0,0,0,0,1,0,0,1,0]]
+
+
+    graph2 = [  [0,1,0,0,0,0,0,0,0,0],
+                [1,0,1,0,1,0,0,0,0,0],
+                [0,1,0,1,0,0,0,0,0,0],
+                [0,0,1,0,1,0,1,0,0,0],
+                [0,1,0,1,0,1,0,0,0,0],
+                [0,0,0,0,1,0,1,1,0,1],
+                [0,0,0,1,0,1,0,1,0,0],
+                [0,0,0,0,0,1,1,0,1,1],
+                [0,0,0,0,0,0,0,1,0,1],
+                [0,0,0,0,0,1,0,1,1,0]]
+
+
+    graph3= [[0,1,1,1,1],
+             [1,0,1,1,1],
+             [1,1,0,1,1],
+             [1,1,1,0,1],
+             [1,1,1,1,0]]
 
     print (f"Greedy Algorithmic\n")
 
-    greedyGraph = GreedyGraph(graph1)
+    greedyGraph = GreedyGraph(graph3)
     greedyGraph.initAdjacentVector()
     greedyGraph.greedyColoring()
     greedyGraph.printPaintedGraph()
 
     print (f"\nBacktraking Algorithmic\n")
 
-    backGraph = BacktrakingGraph(graph1)
+    backGraph = BacktrakingGraph(graph3)
     backGraph.graphColouring()
     backGraph.printPaintedGraph()
 
