@@ -1,4 +1,5 @@
 import os
+import samples
 from GraphColouringBacktrakingObject import BacktrakingGraph
 from GraphColouringGreedyObject import GreedyGraph
 
@@ -6,51 +7,24 @@ clearScreen = lambda: os.system("clear") if os.name == "posix" else os.system("c
 
 def main():
     clearScreen()
-    graph1 = [  [0,1,0,0,0,0,0,0,0,0],
-                [1,0,1,0,1,0,0,0,0,0],
-                [0,1,0,1,0,0,0,0,0,0],
-                [0,0,1,0,1,0,1,0,0,0],
-                [0,1,0,1,0,1,0,0,0,0],
-                [0,0,0,0,1,0,1,1,0,1],
-                [0,0,0,1,0,1,0,1,0,0],
-                [0,0,0,0,0,1,1,0,1,0],
-                [0,0,0,0,0,0,0,1,0,1],
-                [0,0,0,0,0,1,0,0,1,0]]
-
-
-    graph2 = [  [0,1,0,0,0,0,0,0,0,0],
-                [1,0,1,0,1,0,0,0,0,0],
-                [0,1,0,1,0,0,0,0,0,0],
-                [0,0,1,0,1,0,1,0,0,0],
-                [0,1,0,1,0,1,0,0,0,0],
-                [0,0,0,0,1,0,1,1,0,1],
-                [0,0,0,1,0,1,0,1,0,0],
-                [0,0,0,0,0,1,1,0,1,1],
-                [0,0,0,0,0,0,0,1,0,1],
-                [0,0,0,0,0,1,0,1,1,0]]
-
-
-    graph3= [[0,1,1,1,1],
-             [1,0,1,1,1],
-             [1,1,0,1,1],
-             [1,1,1,0,1],
-             [1,1,1,1,0]]
 
     print (f"Greedy Algorithmic\n")
 
-    greedyGraph = GreedyGraph(graph3)
+    greedyGraph = GreedyGraph(samples.graph6_1)
     greedyGraph.initAdjacentVector()
     greedyGraph.greedyColoring()
     greedyGraph.printPaintedGraph()
 
     print (f"\nBacktraking Algorithmic\n")
 
-    backGraph = BacktrakingGraph(graph3)
+    backGraph = BacktrakingGraph(samples.graph6_1)
     backGraph.graphColouring()
+    backGraph.filterTheBests()
     backGraph.printPaintedGraph()
+    backGraph.showOptimalResults()
+    # backGraph.showNopOptimalResults()
 
 
-
-# Driver Code
+# Main module
 if __name__ == '__main__': 
     main()

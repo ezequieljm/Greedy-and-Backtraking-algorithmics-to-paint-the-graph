@@ -1,20 +1,5 @@
-# Python3 program to implement greedy
-# algorithm for graph coloring
-
-# 1. Color first vertex with first color. 
-# 2. Do following for remaining V-1 vertices. 
-# ….. a) Consider the currently picked vertex and color it with the 
-# lowest numbered color that has not been used on any previously 
-# colored vertices adjacent to it. If all previously used colors 
-# appear on vertices adjacent to v, assign a new color to it.
-
-# Analysis of Basic Algorithm 
-
-# The above algorithm doesn’t always use minimum number of colors. Also, the number of colors used sometime 
-# depend on the order in which vertices are processed. For example, consider the following two graphs. Note 
-# that in graph on right side, vertices 3 and 4 are swapped. If we consider the vertices 0, 1, 2, 3, 4 in left 
-# graph, we can color the graph using 3 colors. But if we consider the vertices 0, 1, 2, 3, 4 in right graph, 
-# we need 4 colors. 
+import execution_time
+import samples
 
 class GreedyGraph():
     def __init__(self, initialMatrix):
@@ -22,6 +7,7 @@ class GreedyGraph():
         self.adjacentMatrix = initialMatrix
         self.adjacentVector = [[] for i in range(self.numberOfVertices)]
         self.paintedGraph = None
+        self.colNames = samples.colourNames
 
     def initAdjacentVector(self):
         for row in range(self.numberOfVertices):
@@ -32,10 +18,11 @@ class GreedyGraph():
 
     def printPaintedGraph(self):
         for vertex in range(self.numberOfVertices): 
-            print("Vertex", vertex, "  --->   Color", self.paintedGraph[vertex])
+            print("Vertex", vertex, "  ---> ", self.colNames[self.paintedGraph[vertex]])
  
     # Assigns colors (starting from 0) to all
     # vertices and prints the assignment of colors
+    # @execution_time.execution_time
     def greedyColoring(self):
         result = [-1] * self.numberOfVertices
     
@@ -70,3 +57,22 @@ class GreedyGraph():
                 if (result[adjacent] != -1): available[result[adjacent]] = False
 
         self.paintedGraph = result
+
+
+# Python3 program to implement greedy
+# algorithm for graph coloring
+
+# 1. Color first vertex with first color. 
+# 2. Do following for remaining V-1 vertices. 
+# ….. a) Consider the currently picked vertex and color it with the 
+# lowest numbered color that has not been used on any previously 
+# colored vertices adjacent to it. If all previously used colors 
+# appear on vertices adjacent to v, assign a new color to it.
+
+# Analysis of Basic Algorithm 
+
+# The above algorithm doesn’t always use minimum number of colors. Also, the number of colors used sometime 
+# depend on the order in which vertices are processed. For example, consider the following two graphs. Note 
+# that in graph on right side, vertices 3 and 4 are swapped. If we consider the vertices 0, 1, 2, 3, 4 in left 
+# graph, we can color the graph using 3 colors. But if we consider the vertices 0, 1, 2, 3, 4 in right graph, 
+# we need 4 colors. 
